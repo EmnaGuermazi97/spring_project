@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.PublicationBean;
+import com.example.demo.Bean.PublicationBean;
 import com.example.demo.entities.EnseignantChercheur;
 import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Membre;

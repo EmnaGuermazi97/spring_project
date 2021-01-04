@@ -3,6 +3,7 @@ package com.example.demo.entities;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -18,15 +19,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import com.example.demo.PublicationBean;
+import com.example.demo.Bean.PublicationBean;
+import com.example.demo.Bean.EventBean;
+import com.example.demo.Bean.ToolBean;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -55,6 +51,10 @@ public  abstract class Membre implements Serializable {
 	private String password;
 	@Transient
 	Collection<PublicationBean> pubs;
+	@Transient
+	List<ToolBean> tools;
+	@Transient
+	List<EventBean> events;
 	public Membre() {
 		super();
 	}

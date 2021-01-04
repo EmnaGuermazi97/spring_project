@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import tn.enis.tool.entity.Tool;
 import tn.enis.tool.service.IToolService;
 
-@RequestMapping("/api/tools")
 @RestController
+@RequestMapping("/tools")
 
 public class ToolController {
+	
 	@Autowired
 	IToolService toolService;
 
@@ -34,14 +35,14 @@ public class ToolController {
 		return toolService.update(tool);
 
 	}
-	@GetMapping(value = "{id}")
-	public Tool findoneTool(@PathVariable Long id) {
+	@GetMapping(value = "/{id}")
+	public Tool findToolById(@PathVariable Long id) {
 
 		return toolService.getById(id);
 
 	}
 
-	@DeleteMapping(value = "{id}")
+	@DeleteMapping(value = "/{id}")
 	public void DeleteTool(@RequestBody Long id) {
 		toolService.delete(id);
 

@@ -2,7 +2,9 @@ package com.example.demo.service;
 
 import java.util.List;
 
-import com.example.demo.PublicationBean;
+import com.example.demo.Bean.EventBean;
+import com.example.demo.Bean.PublicationBean;
+import com.example.demo.Bean.ToolBean;
 import com.example.demo.entities.EnseignantChercheur;
 import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Membre;
@@ -28,7 +30,17 @@ public interface IMemberService {
 	
 	//other ...
 	
+	//other ...
+	
 	public Etudiant affecterencadrantToetudiant(Long idetd, Long idens);
+	// for publication 
 	public void affecterauteurTopublication(Long idauteur, Long idpub);
 	public List<PublicationBean> findPublicationparauteur(Long idauteur);
+	// for events 
+	void assignMemberToEvent(Long idMember, Long idEvent);
+	List<EventBean> findEventByMemberId(Long idMember);
+	// for tools
+	void assignMemberToTool(Long idMember, Long idTool);
+	List<ToolBean> findToolByMemberId(Long idMember);
+
 }

@@ -6,17 +6,27 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.PublicationBean;
+import com.example.demo.Bean.EventBean;
+import com.example.demo.Bean.PublicationBean;
+import com.example.demo.Bean.ToolBean;
 import com.example.demo.dao.EnseignantChercheurRepository;
 import com.example.demo.dao.EtudiantRepository;
+import com.example.demo.dao.MemberEventRepository;
 import com.example.demo.dao.MemberRepository;
+import com.example.demo.dao.MemberToolRepository;
 import com.example.demo.dao.Membrepubrepository;
 import com.example.demo.entities.EnseignantChercheur;
 import com.example.demo.entities.Etudiant;
+import com.example.demo.entities.MemberEventIds;
+import com.example.demo.entities.MemberTool;
+import com.example.demo.entities.MemberToolId;
+import com.example.demo.entities.MemberEvent;
 import com.example.demo.entities.Membre;
 import com.example.demo.entities.Membre_Pub_Ids;
 import com.example.demo.entities.Membre_Publication;
+import com.example.demo.proxies.EventProxy;
 import com.example.demo.proxies.PublicationProxy;
+import com.example.demo.proxies.ToolProxy;
 @Service
 public class MemberImpl implements IMemberService {
 
@@ -29,7 +39,15 @@ public class MemberImpl implements IMemberService {
 	@Autowired
 	Membrepubrepository membrepubrepository;
 	@Autowired
+	MemberEventRepository memberEventRepository;
+	@Autowired
+	MemberToolRepository memberToolRepository;
+	@Autowired
 	PublicationProxy proxy;
+	@Autowired
+	EventProxy eventProxy;
+	@Autowired
+	ToolProxy toolProxy;
 	
 	public Membre addMember(Membre m) {
 		memberRepository.save(m);
@@ -119,6 +137,52 @@ public class MemberImpl implements IMemberService {
 		
 		return pubs;
 	}
+
+// for events 
+
+	@Override
+	public void assignMemberToEvent(Long idMember, Long idEvent) {
+		Membre member = memberRepository.findById(idMember).get();
+		MemberEvent memberEvent = new MemberEvent();
+		memberEvent.setMember(member);
+		memberEvent.setEventMemberId(new MemberEventIds(idMember, idEvent));
+		memberEventRepository.save(memberEvent);
+	}
+
+
+	@Override
+	public List<EventBean> findEventByMemberId(Long idMember) {
+		List<EventBean> events = new ArrayList<EventBean>();
+		List<MemberEvent> membersEventId = memberEventRepository.findMemberEventId(idMember);
+		membersEventId.forEach(s -> {
+			events.add(eventProxy.findEventById(s.getEventMemberId().getEventId()).getContent());
+
+		});
+
+		return events;
+	}
+  //for tools
+
+	@Override
+	public void assignMemberToTool(Long idMember, Long idTool) {
+		Membre member = memberRepository.findById(idMember).get();
+		MemberTool memberTool = new MemberTool();
+		memberTool.setMember(member);
+		memberTool.setToolMemberId(new MemberToolId(idMember, idTool));
+		memberToolRepository.save(memberTool);		
+	}
+
+
+	@Override
+	public List<ToolBean> findToolByMemberId(Long idMember) {
+		List<ToolBean> tools = new ArrayList<ToolBean>();
+		List<MemberTool> membersToolId = memberToolRepository.findMemberToolId(idMember);
+		membersToolId.forEach(s -> {
+			tools.add(toolProxy.findToolById(s.getToolMemberId().getToolId()).getContent());
+		});
+
+		return tools;	
+		}
 	
 
 }

@@ -2,12 +2,7 @@ package com.example.demo.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Embeddable
 public class Membre_Pub_Ids  implements Serializable{

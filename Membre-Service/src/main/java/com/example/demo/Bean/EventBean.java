@@ -1,37 +1,18 @@
-package tn.enis.event.entity;
+package com.example.demo.Bean;
 
 import java.time.LocalDate;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
-@Entity
-public class Event {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class EventBean {
 	Long id;
 	String title;
 	LocalDate date;
 	String location;
-	public Event() {
+	public EventBean() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-	
-	public Event(String title, LocalDate date, String location) {
-		super();
-		this.title = title;
-		this.date = date;
-		this.location = location;
-	}
-
-	public Event(Long id, String title, LocalDate date, String location) {
+	public EventBean(Long id, String title, LocalDate date, String location) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -62,6 +43,5 @@ public class Event {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	
 
 }

@@ -18,7 +18,12 @@ import com.example.demo.dao.MemberRepository;
 import com.example.demo.entities.EnseignantChercheur;
 import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Membre;
+import com.example.demo.Bean.EventBean;
+import com.example.demo.Bean.PublicationBean;
+import com.example.demo.Bean.ToolBean;
+import com.example.demo.proxies.EventProxy;
 import com.example.demo.proxies.PublicationProxy;
+import com.example.demo.proxies.ToolProxy;
 import com.example.demo.service.IMemberService;
 
 @SpringBootApplication
@@ -34,9 +39,11 @@ public class MembreServiceApplication implements CommandLineRunner {
 	EtudiantRepository etudiantRepository;
 	@Autowired
 	PublicationProxy publicationProxy;
+	@Autowired
+	EventProxy eventProxy;
+	@Autowired
+	ToolProxy toolProxy;
 	
-	
-
 	public static void main(String[] args) {
 		SpringApplication.run(MembreServiceApplication.class, args);
 	}
@@ -99,6 +106,28 @@ public class MembreServiceApplication implements CommandLineRunner {
 		
 		PublicationBean p=publicationProxy.recupererUnePublication(1L).getContent();
 		System.out.println(p);
+		
+		// to make sure communication is assured with Event Ms
+		//récupérer les evenement par id en invoquant evenement-service
+		EventBean event1 =eventProxy.findEventById(1L).getContent();
+		System.out.println(event1.getTitle()+ event1.getDate()+ "  "+event1.getId());
+		//récupérer l'outil par id en invoquant outil-service
+		ToolBean tool1 =toolProxy.findToolById(1L).getContent();
+		System.out.println(tool1.getSource()+ " "+ tool1.getDate()+ "  "+tool1.getId());
+	/*	Collection<ToolBean> tools =(Collection<ToolBean>) toolProxy.findAllTools();
+
+		Iterator<ToolBean> iterator = tools.iterator();
+		
+        // while loop
+		
+        while (iterator.hasNext()) {
+        System.out.println("value= " + iterator.next().getId()+" "+ iterator.next().getDate());
+        }
+		
+		*/
+		
+		//tools.forEach(r->System.out.println(r.getId()+" "+ r.getDate()));
+
 	}
 
 }

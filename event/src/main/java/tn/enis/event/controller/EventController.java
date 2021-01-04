@@ -14,7 +14,7 @@ import tn.enis.event.entity.Event;
 import tn.enis.event.service.IEventService;
 
 @RestController
-@RequestMapping("/api/events")
+@RequestMapping("/events")
 
 public class EventController {
 	@Autowired
@@ -30,8 +30,8 @@ public class EventController {
 		return eventService.findAll();
 	}
 
-	@GetMapping(value = "{id}")
-	public Event findoneEVent(@PathVariable Long id) {
+	@GetMapping(value = "/{id}")
+	public Event findEventById(@PathVariable Long id) {
 
 		return eventService.getById(id);
 
@@ -44,7 +44,7 @@ public class EventController {
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public void DeleteMember(@PathVariable Long id) {
+	public void DeleteEvent(@PathVariable Long id) {
 		eventService.delete(id);
 
 	}
