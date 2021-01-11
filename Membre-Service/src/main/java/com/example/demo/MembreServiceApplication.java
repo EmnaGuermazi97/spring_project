@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +26,6 @@ import com.example.demo.proxies.EventProxy;
 import com.example.demo.proxies.PublicationProxy;
 import com.example.demo.proxies.ToolProxy;
 import com.example.demo.service.IMemberService;
-
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
@@ -108,25 +108,17 @@ public class MembreServiceApplication implements CommandLineRunner {
 		System.out.println(p);
 		
 		// to make sure communication is assured with Event Ms
+		
 		//récupérer les evenement par id en invoquant evenement-service
 		EventBean event1 =eventProxy.findEventById(1L).getContent();
 		System.out.println(event1.getTitle()+ event1.getDate()+ "  "+event1.getId());
+		// assign a memeber to the event 
+		iMemberService.assignMemberToEvent(1L,1l);
 		//récupérer l'outil par id en invoquant outil-service
 		ToolBean tool1 =toolProxy.findToolById(1L).getContent();
 		System.out.println(tool1.getSource()+ " "+ tool1.getDate()+ "  "+tool1.getId());
-	/*	Collection<ToolBean> tools =(Collection<ToolBean>) toolProxy.findAllTools();
 
-		Iterator<ToolBean> iterator = tools.iterator();
 		
-        // while loop
-		
-        while (iterator.hasNext()) {
-        System.out.println("value= " + iterator.next().getId()+" "+ iterator.next().getDate());
-        }
-		
-		*/
-		
-		//tools.forEach(r->System.out.println(r.getId()+" "+ r.getDate()));
 
 	}
 

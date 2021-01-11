@@ -17,7 +17,8 @@ public class Publication {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String titre;
-	private String type;//article de journal/ manifestation/chapitre de livre/livre/poster
+	private String type;
+	//article de journal/ manifestation/chapitre de livre/livre/poster
 	@Temporal(TemporalType.DATE)
 	private Date dateApparition;
 	private String lien;

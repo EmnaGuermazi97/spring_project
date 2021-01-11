@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name= "type_mbr", discriminatorType = DiscriminatorType.STRING,length = 3)
+@DiscriminatorColumn(name= "type_mbr", discriminatorType = DiscriminatorType.STRING)
 
 public  abstract class Membre implements Serializable {
 	@Id

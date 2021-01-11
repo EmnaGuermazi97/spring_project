@@ -21,20 +21,25 @@ public class ToolController {
 	@Autowired
 	IToolService toolService;
 
-	@PostMapping()
+	@PostMapping(value = "/add")
 	public Tool addTool(@RequestBody Tool tool) {
 		return toolService.add(tool);
 	}
-
-	@GetMapping()
-	public List<Tool> findAllTools() {
-		return toolService.findAll();
-	}
-	@PutMapping()
+	@PutMapping(value = "/update/{id}")
 	public Tool updateTool(@RequestBody Tool tool) {
 		return toolService.update(tool);
 
 	}
+	@DeleteMapping(value = "delete/{id}")
+	public void DeleteTool(@PathVariable Long id) {
+		toolService.delete(id);
+
+	}
+	@GetMapping()
+	public List<Tool> findAllTools() {
+		return toolService.findAll();
+	}
+	
 	@GetMapping(value = "/{id}")
 	public Tool findToolById(@PathVariable Long id) {
 
@@ -42,10 +47,6 @@ public class ToolController {
 
 	}
 
-	@DeleteMapping(value = "/{id}")
-	public void DeleteTool(@RequestBody Long id) {
-		toolService.delete(id);
-
-	}
+	
 
 }
