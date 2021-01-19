@@ -19,7 +19,7 @@ import com.example.demo.service.IMemberService;
 
 
 @RestController
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class MembreRestController {
 	@Autowired
 	IMemberService iMemberService;
