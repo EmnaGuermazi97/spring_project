@@ -38,9 +38,9 @@ public interface IMemberService {
 	public List<PublicationBean> findPublicationparauteur(Long idauteur);
 	// for events 
 	void assignMemberToEvent(Long idMember, Long idEvent);
-	List<EventBean> findEventByMemberId(Long idMember);
+	List<EventBean> findEventsByMemberId(Long idMember);
 	// for tools
 	void assignMemberToTool(Long idMember, Long idTool);
-	List<ToolBean> findToolByMemberId(Long idMember);
+	List<ToolBean> findToolsByMemberId(Long idMember);
 
 }

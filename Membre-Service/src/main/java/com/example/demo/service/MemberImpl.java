@@ -151,7 +151,7 @@ public class MemberImpl implements IMemberService {
 
 
 	@Override
-	public List<EventBean> findEventByMemberId(Long idMember) {
+	public List<EventBean> findEventsByMemberId(Long idMember) {
 		List<EventBean> events = new ArrayList<EventBean>();
 		List<MemberEvent> membersEventId = memberEventRepository.findMemberEventId(idMember);
 		membersEventId.forEach(s -> {
@@ -174,7 +174,7 @@ public class MemberImpl implements IMemberService {
 
 
 	@Override
-	public List<ToolBean> findToolByMemberId(Long idMember) {
+	public List<ToolBean> findToolsByMemberId(Long idMember) {
 		List<ToolBean> tools = new ArrayList<ToolBean>();
 		List<MemberTool> membersToolId = memberToolRepository.findMemberToolId(idMember);
 		membersToolId.forEach(s -> {

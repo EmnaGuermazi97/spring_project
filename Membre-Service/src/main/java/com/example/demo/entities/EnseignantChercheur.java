@@ -11,12 +11,6 @@ import javax.persistence.OneToMany;
 import com.example.demo.Bean.PublicationBean;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 @Entity
 @DiscriminatorValue("enseignant")
 public class EnseignantChercheur extends Membre implements Serializable{
@@ -38,25 +32,26 @@ public class EnseignantChercheur extends Membre implements Serializable{
 
 	public EnseignantChercheur() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public EnseignantChercheur(String cin, String nom, String prenom, Date dateNaissance, String cv, byte[] photo,
 			String email, String password, Collection<PublicationBean> pubs) {
 		super(cin, nom, prenom, dateNaissance, cv, photo, email, password, pubs);
-		// TODO Auto-generated constructor stub
 	}
 
 	public EnseignantChercheur(String cin, String nom, String prenom, Date dateNaissance, String cv, String email,
 			String password) {
 		super(cin, nom, prenom, dateNaissance, cv, email, password);
-		// TODO Auto-generated constructor stub
+	}
+	public EnseignantChercheur(String cin, String nom, String prenom, Date dateNaissance, String email) {
+		super(cin, nom, prenom, dateNaissance,email);
 	}
 
-	public EnseignantChercheur(String cin, String nom, String prenom, Date dateNaissance, String email,
-			String password) {
-		super(cin, nom, prenom, dateNaissance, email, password);
-		// TODO Auto-generated constructor stub
+
+	public EnseignantChercheur(String etablissement, String grade) {
+		super();
+		this.etablissement = etablissement;
+		this.grade = grade;
 	}
 
 	public EnseignantChercheur(String etablissement, String grade, Collection<Etudiant> etudiants) {

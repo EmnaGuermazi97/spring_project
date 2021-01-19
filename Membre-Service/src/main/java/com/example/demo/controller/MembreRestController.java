@@ -55,6 +55,11 @@ public class MembreRestController {
 	{
 		return iMemberService.addMember(ens);
 	}
+	@PostMapping(value = "/membres/add")
+	public Membre addMembre(@RequestBody Membre member)
+	{
+		return iMemberService.addMember(member);
+	}
 	@PutMapping(value="/membres/etudiant/{id}")
 	public Membre updatemembre(@PathVariable Long id, @RequestBody Etudiant p)
 	{

@@ -67,6 +67,15 @@ public  abstract class Membre implements Serializable {
 		this.email = email;
 		this.password = password;
 	}
+	
+	public Membre(String cin, String nom, String prenom, Date dateNaissance, String email) {
+		super();
+		this.cin = cin;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.email = email;
+	}
 	public Membre(String cin, String nom, String prenom, Date dateNaissance, String cv, byte[] photo, String email,
 			String password, Collection<PublicationBean> pubs) {
 		super();

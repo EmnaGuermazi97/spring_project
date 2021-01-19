@@ -2,7 +2,9 @@ package com.example.demo;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
 
@@ -22,7 +25,9 @@ import com.example.demo.entities.Membre;
 import com.example.demo.Bean.EventBean;
 import com.example.demo.Bean.PublicationBean;
 import com.example.demo.Bean.ToolBean;
+import com.example.demo.Bean.UserBean;
 import com.example.demo.proxies.EventProxy;
+import com.example.demo.proxies.Proxy;
 import com.example.demo.proxies.PublicationProxy;
 import com.example.demo.proxies.ToolProxy;
 import com.example.demo.service.IMemberService;
@@ -43,17 +48,30 @@ public class MembreServiceApplication implements CommandLineRunner {
 	EventProxy eventProxy;
 	@Autowired
 	ToolProxy toolProxy;
+	@Autowired
+	Proxy proxy;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(MembreServiceApplication.class, args);
 	}
 
 
+
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
+		// create 2 admins
 		
+		SimpleDateFormat dateFormatter =new SimpleDateFormat("yyyy-MM-dd");
+		Date date0 = dateFormatter.parse("1997-12-06");
+		Date date00 = dateFormatter.parse("1997-10-03");
+		EnseignantChercheur admin1= new EnseignantChercheur("11094354", "Emna", "Guermazi", date0,"", "emnaguermazi817@gmail.com","","ENIS","Professeur");
+		memberRepository.save(admin1);
+		
+		Membre admin2= new EnseignantChercheur("01752354", "Eya", "Ben Khater", date00,"","eyaBenkhater817@gmail.com","","ENIS", "MA");
+	
+		memberRepository.save(admin2);
 		// créer deux instances de type membre un enseignant et une autre étudiant
 		//sauvegrader les 2 dans la base de données
+		
 		EnseignantChercheur ens1= new EnseignantChercheur("01752354", "Jmaiel", "Mohamed", new Date(), "", "jmaiel@enis.tn", "0000", "ENIS", "Professeur");
 		memberRepository.save(ens1);
 		
@@ -61,7 +79,6 @@ public class MembreServiceApplication implements CommandLineRunner {
 	
 		memberRepository.save(ens2);
 		
-		SimpleDateFormat dateFormatter =new SimpleDateFormat("yyyy-MM-dd");
 		Date date1 = dateFormatter.parse("2010-05-01");
 		Date date2 = dateFormatter.parse("2019-05-01");
 		Date date3 = dateFormatter.parse("2012-05-01");
@@ -76,7 +93,7 @@ public class MembreServiceApplication implements CommandLineRunner {
 		memberRepository.save(etd4);
 		
 		
-		// affecter un étduiant à un enseigant
+	/*	// affecter un étduiant à un enseigant
 		iMemberService.affecterencadrantToetudiant(5L, 1L);
 		iMemberService.affecterencadrantToetudiant(6L, 1L);
 		iMemberService.affecterencadrantToetudiant(3L, 1L);
@@ -117,9 +134,8 @@ public class MembreServiceApplication implements CommandLineRunner {
 		//récupérer l'outil par id en invoquant outil-service
 		ToolBean tool1 =toolProxy.findToolById(1L).getContent();
 		System.out.println(tool1.getSource()+ " "+ tool1.getDate()+ "  "+tool1.getId());
-
+		*/
 		
-
 	}
 
 }
