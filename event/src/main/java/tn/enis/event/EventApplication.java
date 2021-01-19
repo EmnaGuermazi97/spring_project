@@ -37,9 +37,6 @@ public class EventApplication implements CommandLineRunner {
 		eventRepository.save(event2);	
 		eventRepository.save(event3);	
 		eventRepository.save(event4);	
-
-
-
 		}
 
 

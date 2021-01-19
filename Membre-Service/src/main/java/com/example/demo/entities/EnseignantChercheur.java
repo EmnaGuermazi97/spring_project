@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@DiscriminatorValue("ens")
+@DiscriminatorValue("enseignant")
 public class EnseignantChercheur extends Membre implements Serializable{
 	private String etablissement;
 	private String grade;

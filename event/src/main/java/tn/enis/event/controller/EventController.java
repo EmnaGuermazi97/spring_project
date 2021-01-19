@@ -20,11 +20,21 @@ public class EventController {
 	@Autowired
 	IEventService eventService;
 
-	@PostMapping()
+	@PostMapping(value = "/add")
 	public Event addEvent(@RequestBody Event event) {
 		return eventService.add(event);
 	}
+	@PutMapping(value = "/update/{id}")
+	public Event updateEvent(@RequestBody Event event) {
+		return eventService.update(event);
 
+	}
+
+	@DeleteMapping(value = "delete/{id}")
+	public void deleteEvent(@PathVariable Long id) {
+		eventService.delete(id);
+
+	}
 	@GetMapping()
 	public List<Event> findAllEvents() {
 		return eventService.findAll();
@@ -37,16 +47,6 @@ public class EventController {
 
 	}
 
-	@PutMapping(value = "/update")
-	public Event updateEvent(@RequestBody Event event) {
-		return eventService.update(event);
-
-	}
-
-	@DeleteMapping(value = "/{id}")
-	public void DeleteEvent(@PathVariable Long id) {
-		eventService.delete(id);
-
-	}
+	
 
 }

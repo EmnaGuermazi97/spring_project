@@ -17,7 +17,7 @@ import com.example.demo.Bean.PublicationBean;
 
 
 @Entity
-@DiscriminatorValue("etd")
+@DiscriminatorValue("etudiant")
 public class Etudiant extends Membre implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date dateInscription;

@@ -12,6 +12,14 @@ public class EventBean {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public EventBean(String title, LocalDate date, String location) {
+		super();
+		this.title = title;
+		this.date = date;
+		this.location = location;
+	}
+
 	public EventBean(Long id, String title, LocalDate date, String location) {
 		super();
 		this.id = id;
@@ -19,6 +27,7 @@ public class EventBean {
 		this.date = date;
 		this.location = location;
 	}
+	
 	public Long getId() {
 		return id;
 	}
