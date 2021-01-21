@@ -19,7 +19,6 @@ import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType
 
 import com.example.demo.dao.EtudiantRepository;
 import com.example.demo.dao.MemberRepository;
-import com.example.demo.dao.MemberUser;
 import com.example.demo.entities.EnseignantChercheur;
 import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Membre;
@@ -51,8 +50,7 @@ public class MembreServiceApplication implements CommandLineRunner {
 	ToolProxy toolProxy;
 	@Autowired
 	Proxy proxy;
-	@Autowired
-	MemberUser getMemberId;
+
 
 	
 	public static void main(String[] args) {
@@ -96,8 +94,8 @@ public class MembreServiceApplication implements CommandLineRunner {
 		memberRepository.save(etd3);
 		memberRepository.save(etd4);
 		
-		Long idMember= getMemberId.getMemberIdByMemberCin("01752354");
-		System.out.println("this is the member id found by the cin: "+idMember);
+	//	Long idMember= getMemberId.getMemberIdByMemberCin("01752354");
+		System.out.println("this is the member id found by the cin: "+memberRepository.getMemberIdByMemberCin("01752354"));
 
 		/*
 		

@@ -31,11 +31,6 @@ public interface IMemberService {
 	public List<EnseignantChercheur> findByGrade(String grade);
 	public List<EnseignantChercheur> findByEtablissement(String etablissement);
 	
-	//public Long getMemberIdByMemberCin(String cin);
-	//@Query("select id from Membre id where cin=:x")
-	//public Long getMemberIdByMemberCin(@Param ("x") String cin) ;	
-
-	
 	public Etudiant affecterencadrantToetudiant(Long idetd, Long idens);
 	// for publication 
 	public void affecterauteurTopublication(Long idauteur, Long idpub);
