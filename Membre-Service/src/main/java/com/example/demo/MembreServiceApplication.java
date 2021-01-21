@@ -19,6 +19,7 @@ import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType
 
 import com.example.demo.dao.EtudiantRepository;
 import com.example.demo.dao.MemberRepository;
+import com.example.demo.dao.MemberUser;
 import com.example.demo.entities.EnseignantChercheur;
 import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Membre;
@@ -50,6 +51,9 @@ public class MembreServiceApplication implements CommandLineRunner {
 	ToolProxy toolProxy;
 	@Autowired
 	Proxy proxy;
+	@Autowired
+	MemberUser getMemberId;
+
 	
 	public static void main(String[] args) {
 		SpringApplication.run(MembreServiceApplication.class, args);
@@ -58,23 +62,23 @@ public class MembreServiceApplication implements CommandLineRunner {
 
 
 	public void run(String... args) throws Exception {
-		// create 2 admins
-		
 		SimpleDateFormat dateFormatter =new SimpleDateFormat("yyyy-MM-dd");
+		/*
+		// create 2 admins
 		Date date0 = dateFormatter.parse("1997-12-06");
 		Date date00 = dateFormatter.parse("1997-10-03");
-		EnseignantChercheur admin1= new EnseignantChercheur("11094354", "Emna", "Guermazi", date0,"", "emnaguermazi817@gmail.com","","ENIS","Professeur");
+		EnseignantChercheur admin1= new EnseignantChercheur("11094354", "Admin", "Guermazi", date0,"", "admin@hello.hello","","ENIS","Professeur");
 		memberRepository.save(admin1);
-		
+		/*
 		Membre admin2= new EnseignantChercheur("01752354", "Eya", "Ben Khater", date00,"","eyaBenkhater817@gmail.com","","ENIS", "MA");
 	
-		memberRepository.save(admin2);
+		memberRepository.save(admin2);*/
+		
 		// créer deux instances de type membre un enseignant et une autre étudiant
 		//sauvegrader les 2 dans la base de données
 		
-		EnseignantChercheur ens1= new EnseignantChercheur("01752354", "Jmaiel", "Mohamed", new Date(), "", "jmaiel@enis.tn", "0000", "ENIS", "Professeur");
+		EnseignantChercheur ens1= new EnseignantChercheur("01752353", "Jmaiel", "Mohamed", new Date(), "", "jmaiel@enis.tn", "0000", "ENIS", "Professeur");
 		memberRepository.save(ens1);
-		
 		Membre ens2= new EnseignantChercheur("01752354", "mariam", "lahami", new Date(), "",  "lahami@enis.tn", "2222", "ENIS", "MA");
 	
 		memberRepository.save(ens2);
@@ -92,8 +96,12 @@ public class MembreServiceApplication implements CommandLineRunner {
 		memberRepository.save(etd3);
 		memberRepository.save(etd4);
 		
+		Long idMember= getMemberId.getMemberIdByMemberCin("01752354");
+		System.out.println("this is the member id found by the cin: "+idMember);
+
+		/*
 		
-	/*	// affecter un étduiant à un enseigant
+		// affecter un étduiant à un enseigant
 		iMemberService.affecterencadrantToetudiant(5L, 1L);
 		iMemberService.affecterencadrantToetudiant(6L, 1L);
 		iMemberService.affecterencadrantToetudiant(3L, 1L);
@@ -102,9 +110,9 @@ public class MembreServiceApplication implements CommandLineRunner {
 		
 		List<Etudiant> etds=etudiantRepository.findByEncadrant(ens1);
 		System.out.print(etds.size());
-		
+		*/
 		//affecter une publication à un auteur
-		
+	/*	
 		//1-récupérer la publication par id en invoquant publication-service
 		PublicationBean pub1=publicationProxy.recupererUnePublication(1L).getContent();
 		System.out.println(pub1.getTitre()+ "  "+pub1.getId());
@@ -119,22 +127,58 @@ public class MembreServiceApplication implements CommandLineRunner {
 		//afficher le nombre de publication du membre 1
 		List<PublicationBean> lstpubs=iMemberService.findPublicationparauteur(1L);
 		lstpubs.forEach(r->System.out.println(r.toString()));
-		
-		
+
 		PublicationBean p=publicationProxy.recupererUnePublication(1L).getContent();
 		System.out.println(p);
+		*/
+	
 		
 		// to make sure communication is assured with Event Ms
 		
+		
+		/*
+
 		//récupérer les evenement par id en invoquant evenement-service
 		EventBean event1 =eventProxy.findEventById(1L).getContent();
 		System.out.println(event1.getTitle()+ event1.getDate()+ "  "+event1.getId());
-		// assign a memeber to the event 
-		iMemberService.assignMemberToEvent(1L,1l);
+		
+		EventBean event2 =eventProxy.findEventById(2L).getContent();
+		System.out.println(event2.getTitle()+ event2.getDate()+ "  "+event2.getId());
+		EventBean event3 =eventProxy.findEventById(2L).getContent();
+		System.out.println(event3.getTitle()+ event3.getDate()+ "  "+event3.getId());
+
+		
+		iMemberService.assignMemberToEvent(1L,1L);
+		iMemberService.assignMemberToEvent(2L,2L);
+		iMemberService.assignMemberToEvent(1L,3L);
+		List<EventBean>eventsListByMember= iMemberService.findEventsByMemberId(1L);
+		eventsListByMember.forEach(r->System.out.println(r.getId()+"  " +r.getTitle()));
+		*/
+
+
+
+/*
+
+		// assign a member to the event 
 		//récupérer l'outil par id en invoquant outil-service
 		ToolBean tool1 =toolProxy.findToolById(1L).getContent();
 		System.out.println(tool1.getSource()+ " "+ tool1.getDate()+ "  "+tool1.getId());
+		
+		ToolBean tool2 =toolProxy.findToolById(2L).getContent();
+		ToolBean tool3 =toolProxy.findToolById(3L).getContent();
+		iMemberService.assignMemberToTool(1l, 1L);
+		iMemberService.assignMemberToTool(1l, 2L);
+		iMemberService.assignMemberToTool(1l, 3L);
+		
+		iMemberService.assignMemberToTool(2l, 4L);
+		iMemberService.assignMemberToTool(2l, 2L);
 		*/
+
+
+
+
+
+		
 		
 	}
 

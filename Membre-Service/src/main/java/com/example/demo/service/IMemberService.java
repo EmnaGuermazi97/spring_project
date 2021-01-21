@@ -2,6 +2,9 @@ package com.example.demo.service;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import com.example.demo.Bean.EventBean;
 import com.example.demo.Bean.PublicationBean;
 import com.example.demo.Bean.ToolBean;
@@ -28,9 +31,10 @@ public interface IMemberService {
 	public List<EnseignantChercheur> findByGrade(String grade);
 	public List<EnseignantChercheur> findByEtablissement(String etablissement);
 	
-	//other ...
-	
-	//other ...
+	//public Long getMemberIdByMemberCin(String cin);
+	//@Query("select id from Membre id where cin=:x")
+	//public Long getMemberIdByMemberCin(@Param ("x") String cin) ;	
+
 	
 	public Etudiant affecterencadrantToetudiant(Long idetd, Long idens);
 	// for publication 

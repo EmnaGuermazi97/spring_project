@@ -29,7 +29,7 @@ public class WebConfigurer {
 //  }
 
 
-  @Bean
+ /* @Bean
   CorsFilter corsFilter() {
       CorsConfiguration corsConfiguration = new CorsConfiguration();
       corsConfiguration.addAllowedOrigin(CorsConfiguration.ALL);
@@ -40,5 +40,7 @@ public class WebConfigurer {
       source.registerCorsConfiguration("/**", corsConfiguration);
 
       return new CorsFilter(source);
+      
   }
+  */
 }

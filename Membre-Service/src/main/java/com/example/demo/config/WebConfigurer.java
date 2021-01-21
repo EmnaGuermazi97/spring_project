@@ -28,7 +28,7 @@ public class WebConfigurer {
 //      };
 //  }
 
-
+/*
   @Bean
   CorsFilter corsFilter() {
       CorsConfiguration corsConfiguration = new CorsConfiguration();
@@ -40,6 +40,7 @@ public class WebConfigurer {
       source.registerCorsConfiguration("/**", corsConfiguration);
 
       return new CorsFilter(source);
+     
   }
-
+ */
 }

@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.Bean.EventBean;
 import com.example.demo.Bean.PublicationBean;
+import com.example.demo.Bean.ToolBean;
 import com.example.demo.entities.EnseignantChercheur;
 import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Membre;
@@ -96,18 +98,29 @@ public class MembreRestController {
 		return publicationproxy.recupererUnePublication(id);
 		
 	}
-	@GetMapping("/publications/auteur/{id}")
-	public List<PublicationBean>listerpublicationbymembre(@PathVariable(name="id") Long idaut)
+	@GetMapping("/publications/member/{id}")
+	public List<PublicationBean>getPublicationsByMemberId(@PathVariable(name="id") Long idaut)
 	{
 		return iMemberService.findPublicationparauteur(idaut);		
 	}
-	
+	@GetMapping("/events/member/{id}")
+	public List<EventBean>getEventsByMemberId(@PathVariable(name="id") Long idMember)
+	{
+		return iMemberService.findEventsByMemberId(idMember);		
+	}
+	@GetMapping("/tools/member/{id}")
+	public List<ToolBean>getToolsByMemberId(@PathVariable(name="id") Long idMember)
+	{
+		return iMemberService.findToolsByMemberId(idMember);		
+	}
 	@GetMapping("/fullmember/{id}")
 	public Membre findAFullMember(@PathVariable(name="id") Long id)
 	{
-		Membre mbr=iMemberService.findMember(id);
-		mbr.setPubs(iMemberService.findPublicationparauteur(id));
-		return mbr;		
+		Membre member=iMemberService.findMember(id);
+		member.setPubs(iMemberService.findPublicationparauteur(id));
+		
+		return member;		
 	}
+
 	
 }
