@@ -2,6 +2,7 @@ package tn.enis.tool.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ public class Tool {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	LocalDate date;
+	@Column(unique=true)
 	String source;
 	public Tool() {
 		super();

@@ -2,6 +2,8 @@ package tn.enis.event.service;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
+
+
 import tn.enis.event.entity.Event;
 import tn.enis.event.repository.EventRepository;
 
@@ -38,6 +40,11 @@ public class EventServiceImpl implements IEventService {
 	public Event update(Event event) {
 
 		return eventRepository.save(event);
+	}
+
+	@Override
+	public Event getByTitle(String title) {
+		return eventRepository.findByTitle(title);
 	}
 
 }

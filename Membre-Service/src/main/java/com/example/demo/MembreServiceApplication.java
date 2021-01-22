@@ -75,9 +75,9 @@ public class MembreServiceApplication implements CommandLineRunner {
 		// créer deux instances de type membre un enseignant et une autre étudiant
 		//sauvegrader les 2 dans la base de données
 		
-		EnseignantChercheur ens1= new EnseignantChercheur("01752353", "Jmaiel", "Mohamed", new Date(), "", "jmaiel@enis.tn", "0000", "ENIS", "Professeur");
+		EnseignantChercheur ens1= new EnseignantChercheur("11094354", "Jmaiel", "Mohamed", new Date(), "", "jmaiel@enis.tn", "0000", "ENIS", "Professeur");
 		memberRepository.save(ens1);
-		Membre ens2= new EnseignantChercheur("01752354", "mariam", "lahami", new Date(), "",  "lahami@enis.tn", "2222", "ENIS", "MA");
+		Membre ens2= new EnseignantChercheur("12345678", "mariam", "lahami", new Date(), "",  "lahami@enis.tn", "2222", "ENIS", "MA");
 	
 		memberRepository.save(ens2);
 		
@@ -95,7 +95,7 @@ public class MembreServiceApplication implements CommandLineRunner {
 		memberRepository.save(etd4);
 		
 	//	Long idMember= getMemberId.getMemberIdByMemberCin("01752354");
-		System.out.println("this is the member id found by the cin: "+memberRepository.getMemberIdByMemberCin("01752354"));
+		//System.out.println("this is the member id found by the cin: "+memberRepository.getMemberIdByMemberCin("11094354"));
 
 		/*
 		
@@ -110,7 +110,7 @@ public class MembreServiceApplication implements CommandLineRunner {
 		System.out.print(etds.size());
 		*/
 		//affecter une publication à un auteur
-	/*	
+	/*
 		//1-récupérer la publication par id en invoquant publication-service
 		PublicationBean pub1=publicationProxy.recupererUnePublication(1L).getContent();
 		System.out.println(pub1.getTitre()+ "  "+pub1.getId());
@@ -134,7 +134,7 @@ public class MembreServiceApplication implements CommandLineRunner {
 		// to make sure communication is assured with Event Ms
 		
 		
-		/*
+		
 
 		//récupérer les evenement par id en invoquant evenement-service
 		EventBean event1 =eventProxy.findEventById(1L).getContent();
@@ -145,19 +145,17 @@ public class MembreServiceApplication implements CommandLineRunner {
 		EventBean event3 =eventProxy.findEventById(2L).getContent();
 		System.out.println(event3.getTitle()+ event3.getDate()+ "  "+event3.getId());
 
-		
 		iMemberService.assignMemberToEvent(1L,1L);
 		iMemberService.assignMemberToEvent(2L,2L);
 		iMemberService.assignMemberToEvent(1L,3L);
 		List<EventBean>eventsListByMember= iMemberService.findEventsByMemberId(1L);
 		eventsListByMember.forEach(r->System.out.println(r.getId()+"  " +r.getTitle()));
-		*/
-
+		
 
 
 /*
 
-		// assign a member to the event 
+
 		//récupérer l'outil par id en invoquant outil-service
 		ToolBean tool1 =toolProxy.findToolById(1L).getContent();
 		System.out.println(tool1.getSource()+ " "+ tool1.getDate()+ "  "+tool1.getId());
@@ -170,9 +168,9 @@ public class MembreServiceApplication implements CommandLineRunner {
 		
 		iMemberService.assignMemberToTool(2l, 4L);
 		iMemberService.assignMemberToTool(2l, 2L);
-		*/
+		
 
-
+*/
 
 
 

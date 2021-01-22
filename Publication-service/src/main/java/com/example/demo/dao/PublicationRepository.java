@@ -7,5 +7,6 @@ import com.example.demo.entity.Publication;
 
 @Repository
 public interface PublicationRepository extends JpaRepository<Publication, Long> {
+	Publication findByTitre(String titre);
 
 }

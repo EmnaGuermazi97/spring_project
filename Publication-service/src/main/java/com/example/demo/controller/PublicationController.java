@@ -49,6 +49,13 @@ public class PublicationController {
 		return publicationService.getById(id);
 
 	}
+	
+	@GetMapping(value = "find/{title}")
+	public Publication findPublicationByTitle(@PathVariable String title) {
+
+		return publicationService.getByTitle(title);
+
+	}
 
 	
 }

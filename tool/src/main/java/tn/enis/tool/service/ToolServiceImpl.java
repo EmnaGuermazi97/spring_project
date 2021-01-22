@@ -42,4 +42,9 @@ public class ToolServiceImpl implements IToolService {
 		return toolRepository.save(tool);
 	}
 
+	@Override
+	public Tool getBySource(String source) {
+		return toolRepository.findBySource(source);
+	}
+
 }

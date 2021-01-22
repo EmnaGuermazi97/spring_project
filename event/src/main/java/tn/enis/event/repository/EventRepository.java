@@ -5,5 +5,6 @@ import org.springframework.stereotype.Repository;
 import tn.enis.event.entity.Event;
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
+	Event findByTitle(String title);
 
 }

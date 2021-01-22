@@ -1,8 +1,6 @@
 package com.example.demo.controller;
-
-import java.util.Collection;
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.Bean.EventBean;
 import com.example.demo.Bean.PublicationBean;
 import com.example.demo.Bean.ToolBean;
+import com.example.demo.dao.MemberRepository;
 import com.example.demo.entities.EnseignantChercheur;
 import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Membre;
@@ -33,6 +32,8 @@ public class MembreRestController {
 	IMemberService iMemberService;
 	@Autowired
 	PublicationProxy publicationproxy;
+	@Autowired
+	MemberRepository memberRepository;
 	
 	@GetMapping(value = "/membres")
 	public List<Membre> findAllmembres()
@@ -121,6 +122,28 @@ public class MembreRestController {
 		
 		return member;		
 	}
+	@GetMapping("/membres/member/{cin}")
+	public Membre getMemberByCin (@PathVariable String cin)
+	{
+		//Long memberId= memberRepository.getMemberIdByMemberCin(cin)	;
+		//Membre member= (Membre)memberRepository.findById(memberId).get();
+		return iMemberService.findByCin(cin);		
+	}
+	
+	@PutMapping("/membres/publication/assign")
+	public void assignMemberToPublication(Long idauteur, Long idpub) {
+		iMemberService.affecterauteurTopublication(idauteur,idpub);
+	}
+	@GetMapping("/membres/event/assign")
+	public void assignMemberToEvent(Long idMember, Long idEvent)
+	{
+		iMemberService.assignMemberToEvent(idMember, idEvent);
+	}
+	@PutMapping("/membres/tool/assign")
+	public void assignMemberToTool(Long idMember, Long idTool) {
+		iMemberService.assignMemberToTool(idMember, idTool);
+	}	
+
 
 	
 }

@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 import tn.enis.tool.entity.Tool;
 @Repository
 public interface ToolRepository extends JpaRepository<Tool, Long> {
+	Tool findBySource(String source);
 
 }

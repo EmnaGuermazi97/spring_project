@@ -24,7 +24,7 @@ public class ToolApplication implements CommandLineRunner {
         LocalDate date3 = LocalDate.parse("2018-03-09"); 
         LocalDate date4 = LocalDate.parse("2019-04-10"); 
         
-		Tool tool1 = new Tool(date1,"from_member1");
+		Tool tool1 = new Tool(date1,"from member1");
 		Tool tool2 = new Tool(date2,"from_member1 and 2");
 		Tool tool3 = new Tool(date3,"from_member1");
 		Tool tool4 = new Tool(date4,"from_member2");

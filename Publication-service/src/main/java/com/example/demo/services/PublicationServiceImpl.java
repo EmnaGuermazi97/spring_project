@@ -43,4 +43,9 @@ public class PublicationServiceImpl implements IPublicationService{
 
 	}
 
+	@Override
+	public Publication getByTitle(String title) {
+		return publicationRepository.findByTitre(title) ;
+	}
+
 }

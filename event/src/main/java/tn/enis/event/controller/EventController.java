@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+
 import tn.enis.event.entity.Event;
 import tn.enis.event.service.IEventService;
 
@@ -44,6 +46,12 @@ public class EventController {
 	public Event findEventById(@PathVariable Long id) {
 
 		return eventService.getById(id);
+
+	}
+	@GetMapping(value = "/find/{title}")
+	public Event findEventByTitle(@PathVariable String title) {
+
+		return eventService.getByTitle(title);
 
 	}
 

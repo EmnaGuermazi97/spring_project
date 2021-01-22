@@ -7,7 +7,7 @@ public interface IPublicationService {
 	List<Publication> findAll();
 
 	Publication getById(Long id);
-
+    Publication getByTitle(String title);
 	Publication add(Publication tool);
 
 	void delete(Long id);
