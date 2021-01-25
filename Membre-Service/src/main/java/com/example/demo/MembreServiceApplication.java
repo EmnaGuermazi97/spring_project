@@ -75,9 +75,9 @@ public class MembreServiceApplication implements CommandLineRunner {
 		// créer deux instances de type membre un enseignant et une autre étudiant
 		//sauvegrader les 2 dans la base de données
 		
-		EnseignantChercheur ens1= new EnseignantChercheur("11094354", "Jmaiel", "Mohamed", new Date(), "", "jmaiel@enis.tn", "0000", "ENIS", "Professeur");
+		EnseignantChercheur ens1= new EnseignantChercheur("11094354", "Guermazi", "Emna", new Date(), "", "emna.guermazi@enis.tn", "", "ENIS", "Professeur");
 		memberRepository.save(ens1);
-		Membre ens2= new EnseignantChercheur("12345678", "mariam", "lahami", new Date(), "",  "lahami@enis.tn", "2222", "ENIS", "MA");
+		Membre ens2= new EnseignantChercheur("98765432", "mariam", "lahami", new Date(), "",  "lahami@enis.tn", "2222", "ENIS", "MA");
 	
 		memberRepository.save(ens2);
 		
@@ -85,10 +85,10 @@ public class MembreServiceApplication implements CommandLineRunner {
 		Date date2 = dateFormatter.parse("2019-05-01");
 		Date date3 = dateFormatter.parse("2012-05-01");
 		Date date4 = dateFormatter.parse("2012-03-01");
-		Etudiant etd1= new Etudiant("081705454", "ben fekih", "rim", date1, "",  "rim@enis.rn", "11111", date1, "test", "these",null);
-		Etudiant etd2= new Etudiant("885705454", "ben ahmed", "sana", date2, "",  "sana@enis.rn", "11111", date2, "test", "mastere",null);
-		Etudiant etd3= new Etudiant("081454", "chaari", "rim", date3, "",  "chaari@enis.rn", "11111", date3, "test", "these", null);
-		Etudiant etd4= new Etudiant("081454", "ayadi", "ali", date4, "",  "ayadi@enis.rn", "11111", date4, "test", "mastre",null);
+		Etudiant etd1= new Etudiant("08170545", "ben fekih", "rim", date1, "",  "rim@enis.rn", "11111", date1, "test", "these",null);
+		Etudiant etd2= new Etudiant("88570543", "ben ahmed", "sana", date2, "",  "sana@enis.rn", "11111", date2, "test", "mastere",null);
+		Etudiant etd3= new Etudiant("08145423", "chaari", "rim", date3, "",  "chaari@enis.rn", "11111", date3, "test", "these", null);
+		Etudiant etd4= new Etudiant("91081454", "ayadi", "ali", date4, "",  "ayadi@enis.rn", "11111", date4, "test", "mastre",null);
 		memberRepository.save(etd1);
 		memberRepository.save(etd2);
 		memberRepository.save(etd3);
@@ -110,7 +110,7 @@ public class MembreServiceApplication implements CommandLineRunner {
 		System.out.print(etds.size());
 		*/
 		//affecter une publication à un auteur
-	/*
+/*	
 		//1-récupérer la publication par id en invoquant publication-service
 		PublicationBean pub1=publicationProxy.recupererUnePublication(1L).getContent();
 		System.out.println(pub1.getTitre()+ "  "+pub1.getId());
@@ -128,7 +128,7 @@ public class MembreServiceApplication implements CommandLineRunner {
 
 		PublicationBean p=publicationProxy.recupererUnePublication(1L).getContent();
 		System.out.println(p);
-		*/
+		
 	
 		
 		// to make sure communication is assured with Event Ms
@@ -153,7 +153,7 @@ public class MembreServiceApplication implements CommandLineRunner {
 		
 
 
-/*
+
 
 
 		//récupérer l'outil par id en invoquant outil-service
@@ -170,8 +170,8 @@ public class MembreServiceApplication implements CommandLineRunner {
 		iMemberService.assignMemberToTool(2l, 2L);
 		
 
-*/
 
+*/
 
 
 		

@@ -76,13 +76,13 @@ public class MembreRestController {
 		p.setId(id);
 	       return iMemberService.updateMember(p);
 	}
-	/*@DeleteMapping(value="/membres/{id}")
+	@DeleteMapping(value="/membres/delete/{id}")
 	public void deleteMembre(@PathVariable Long id)
 	{
-		return iMemberService.deleteMember(id);
-	}*/
-	@PutMapping(value="/membres/etudiant")
-	public Membre affecter(@RequestParam Long idetd , @RequestParam Long idens )
+		iMemberService.deleteMember(id);
+	}
+	@PostMapping(value="/membres/assign/student/professor")
+	public Membre affecter(Long idetd , Long idens )
 	{
 		
 	       return iMemberService.affecterencadrantToetudiant(idetd, idens);
@@ -129,21 +129,41 @@ public class MembreRestController {
 		//Membre member= (Membre)memberRepository.findById(memberId).get();
 		return iMemberService.findByCin(cin);		
 	}
+	@GetMapping("/membres/student/{id}")
+	public Membre getMemberStudentById (@PathVariable Long id)
+	{
+		return iMemberService.findMember(id);
+	}
+
+	@GetMapping("/membres/professor/{id}")
+	public Membre getMemberProfessorById (@PathVariable Long id)
+	{
+		return iMemberService.findMember(id);
+	}
 	
-	@PutMapping("/membres/publication/assign")
+	@PostMapping("/membres/publication/assign")
 	public void assignMemberToPublication(Long idauteur, Long idpub) {
 		iMemberService.affecterauteurTopublication(idauteur,idpub);
 	}
-	@GetMapping("/membres/event/assign")
+	@PostMapping("/membres/event/assign")
 	public void assignMemberToEvent(Long idMember, Long idEvent)
 	{
 		iMemberService.assignMemberToEvent(idMember, idEvent);
 	}
-	@PutMapping("/membres/tool/assign")
+	@PostMapping("/membres/tool/assign")
 	public void assignMemberToTool(Long idMember, Long idTool) {
 		iMemberService.assignMemberToTool(idMember, idTool);
 	}	
-
+	@GetMapping(value = "/membres/etudients")
+	public List<Etudiant> findAllStudents()
+	{
+		return iMemberService.findAllEtudiants();
+	}
+	@GetMapping(value = "/membres/enseignants")
+	public List<EnseignantChercheur> findAllProfessors()
+	{
+		return iMemberService.findAllEnseignants();
+	}
 
 	
 }

@@ -41,7 +41,7 @@ public class MemberImpl implements IMemberService {
 	@Autowired
 	MemberToolRepository memberToolRepository;
 	@Autowired
-	PublicationProxy proxy;
+	PublicationProxy publicationProxy;
 	@Autowired
 	EventProxy eventProxy;
 	@Autowired
@@ -128,7 +128,7 @@ public class MemberImpl implements IMemberService {
 		
 		idpubs.forEach(s->{
 			System.out.println(s);
-			pubs.add(proxy.recupererUnePublication(s.getId().getPublication_id()).getContent());
+			pubs.add(publicationProxy.recupererUnePublication(s.getId().getPublication_id()).getContent());
 			
 		}
 		);
